@@ -55,7 +55,7 @@ echo "Version - 4.11${normal}"
 echo "OK"
 
 echo "${bold}*****     NIC     *****"
-echo "Broadcom NIC - 2.28.${normal}4"
+echo "Broadcom NIC - 2.28.4${normal}"
 /media/HPESTK1151/firmware/x86_64-linux-gnu/firmware-nic-broadcom-2.28.4-1.1/setup -s -f
 echo "${bold}Intel NIC - 1.22.6${normal}"
 /media/HPESTK1151/firmware/x86_64-linux-gnu/firmware-nic-intel-1.22.6-1.1/setup -s -f
