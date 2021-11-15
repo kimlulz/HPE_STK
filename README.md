@@ -3,27 +3,9 @@ HPE STK for USB
 Based on HPE Scripting Toolkit 11.60    
 
 ## Shell Setting
-### /efi/boot/grub.cfg
-```
-(생략)
-set GRUB_DEFAULT=0
-set timeout=0 // Added
-menuentry "HPE Scripting Toolkit Linux Edition 11.51" {
-  	echo "Loading Kernel..."
-	linux /isolinux/vmlinuz root=/dev/ram0 splash=silent quiet media=usb sstk_conf=toolkit.conf sstk_script=/shell.sh  // Change media method(CDROM->USB) and remove network args.
-	echo "Loading Ram Disk..."
-	initrd /isolinux/initrd.img
-}
-```
-
-### /isolinux/isolinux.cfg
-```
-timeout 1
-(생략)
-label toolkit
-  kernel vmlinuz
-  append initrd=initrd.img root=/dev/ram0 splash=silent quiet media=usb sstk_conf=toolkit.conf sstk_script=/shell.sh network=0
-```
+### grub.cfg, syslinux.cfg, isolinux.cfg
+Delete the syntax associated with network, ipv4.   
+* Syslinux.cfg, isolinux.cfg - change `media=cdrom` to `media=usb`    
 
 ## Script
 ### /scripts/shell.sh
