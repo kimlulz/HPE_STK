@@ -1,5 +1,5 @@
 # HPE_STK
-HPE STK for USB    
+HPE STK running on USB    
 Based on HPE Scripting Toolkit 11.60    
 
 ## Shell Setting
