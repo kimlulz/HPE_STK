@@ -3,56 +3,27 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
-# To install firmware,
-# Extract RPM(Firmware), Find directory 'x86_64-linux-gnu', Put to /firmware
-# /media/HPESTK1160/firmware/x86_64-linux-gnu/[firmware]/setup -s -f
+cat /media/HPESTK1160/localbin/main
 
-echo "*************************"
-echo "by kIM1uL2"
-echo "${bold}HPE Scripting Toolkit"
-echo "Version - 11.60"
-echo "/media/HPESTK1160/"
-echo "*************************"
+echo "${bold}*************************"
+echo "Select script"
+echo "      1) firmware"
+echo "      2) capture"
+echo "      3) get"
+echo ""
+echo "      b) bash shell"
+echo "      s) systeminfo"
+echo "      e) poweroff"
+echo "      r) reboot"
+echo "*************************${normal}"
+read num
 
-echo "${bold}*****     BIOS     *****"
-echo "Version - 2.56${normal}"
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-system-u30-2.56_2021_10_28-1.1/setup -s -f
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-system-u32-2.56_2021_10_28-1.1/setup -s -f
-echo "OK"
-
-echo "${bold}*****     ILO     *****"
-echo "Version - 2.55${normal}"
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-ilo5-2.55-1.1/setup -s -f
-echo "OK"
-
-echo "${bold}*****     ARRAY     *****"
-echo "Version - 4.11${normal}"
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-smartarray-f7c07bdbbd-4.11-1.1/setup -s -f
-echo "OK"
-
-echo "${bold}*****     NIC     *****"
-echo "Broadcom NIC - 2.28.4${normal}"
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-nic-broadcom-2.28.4-1.1/setup -s -f
-echo "${bold}Intel NIC - 1.22.6${normal}"
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-nic-intel-1.22.6-1.1/setup -s -f
-echo "OK"
-
-echo "${bold}*****     SPS     *****"
-echo "Version - 04.01.04.505${normal}"
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-spsgen10-04.01.04.505-1.1/setup -s -f
-echo "OK"
-
-echo "${bold}*****     IE     *****"
-echo "Version - 0.2.2.3${normal}"
-/media/HPESTK1160/firmware/x86_64-linux-gnu/firmware-iegen10-0.2.2.3-1.1/setup -s -f
-echo "OK"
-
-sleep 15
-echo "${bold}*****************************************************"
-echo "UPDATE FINISHED"
-echo "Make sure you check the firmware version on the bios!!!"
-echo "Power will be turned off within 15 seconds."
-echo "*****************************************************${normal}"
-sleep 15
-poweroff -f
-exec /bin/bash
+case $num in
+    1) bash ./firmware.sh;;
+    2) bash ./capture.sh;;
+    3) bash ./get.sh;;
+    b) bash ./bash.sh;; 
+    s) bash ./systeminfo.sh;; 
+    e) poweroff -f;;
+    r) reboot -f;;
+esac
